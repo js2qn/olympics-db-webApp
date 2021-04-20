@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD72$
+        <script src="js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
+        <title>AJAX Persons Example - Displaying FILES</title>
+        <script>
+        $(document).ready(function() {
+                $( "#AthleteName" ).change(function() {
+
+                        $.ajax({
+                                url: 'searchSailorName.php',
+                                data: {searchName: $( "#AthleteName" ).val()},
+                                success: function(data){
+                                        $('#Nameresult').html(data);
+
+                                }
+                        });
+                });
+
+        });
+        </script>
+</head>
+<body>
+        <h3>CS4750 Group20 project - Olypmic Dataset</h3>
+
+        <input class="xlarge" id="AthleteName" type="search" size="30" placeholder="sid contains"/>
+
+        <div id="Nameresult">Search Result</div>
+
+        <br/><br/>
+
+</body>
+</html>
