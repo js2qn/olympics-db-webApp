@@ -12,7 +12,8 @@
                 $stmt->bind_result($ID, $Name, $Sex, $Height, $Weight);
                 echo "<table border=1><th>ID</th><th>Name</th><th>Sex</th><th>Height</th><th>Weight</th>\n";
                 while($stmt->fetch()) {
-                        echo "<tr><td>$ID</td><td>$Name</td><td>$Sex</td><td>$Height</td><td>$Weight</td></tr>";
+                        echo "<tr><td>$ID</td><td>$Name</td><td>$Sex</td><td>$Height</td><td>$Weight</td>";
+                        echo '<td><a href="AthleteSite.php?ID='. $ID .'">View More</a></td></tr>';
                 }
                 echo "</table>";
 
