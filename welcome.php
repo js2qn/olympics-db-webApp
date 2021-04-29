@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 'on');
 // Initialize the session
 session_start();
  
@@ -25,5 +27,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
         <a href="logout.php" class="btn btn-danger ml-3">Sign Out of Your Account</a>
     </p>
+    <?php
+        if($_SESSION["usertype"] == 1) {
+            echo '<a href="index.html">Index page</a>';
+        }
+    ?>
+    <br>
+    <a href="insert.html">Insert page</a>
+    
 </body>
 </html>

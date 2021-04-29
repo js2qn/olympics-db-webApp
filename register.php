@@ -68,17 +68,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+        $sql = "INSERT INTO users (username, password, user_type) VALUES (?, ?, ?)";
         
         if($stmt = mysqli_prepare($link, $sql)){
             
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+            mysqli_stmt_bind_param($stmt, "ssi", $param_username, $param_password, $param_usertype);
             
             // Set parameters
             $param_username = $username;
             $salt = uniqid(mt_rand(), true);
             $param_password = crypt($password, $salt); // Creates a password hash
+            $param_usertype = 0;
 
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
