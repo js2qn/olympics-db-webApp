@@ -1,8 +1,20 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 'on');
-// Include config file
-require_once "config.php";
+
+/* Database credentials for registration */
+define('DB_SERVER', 'usersrv01.cs.virginia.edu');
+define('DB_USERNAME', 'jg6sa_d');
+define('DB_PASSWORD', 'CS4750group20!');
+define('DB_NAME', 'jg6sa');
+ 
+/* Attempt to connect to MySQL database */
+$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+ 
+// Check connection
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
  
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";

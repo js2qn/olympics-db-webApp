@@ -22,18 +22,27 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </style>
 </head>
 <body>
-    <h1 class="my-5">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
+    <h1 class="my-5">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our Olympics site.</h1>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Olympic_rings_without_rims.svg" alt="Olympics logo">
+    <br><br>
     <p>
         <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
         <a href="logout.php" class="btn btn-danger ml-3">Sign Out of Your Account</a>
     </p>
+    <p>
+        <a href="index_Games.html" class="btn btn-primary">Search Games</a>
+        <a href="index_Names.html" class="btn btn-primary">Search Names</a>
+        <a href="index_Teams.html" class="btn btn-primary">Search Teams</a>
+    </p>
     <?php
         if($_SESSION["usertype"] == 1) {
-            echo '<a href="index.html">Index page</a>';
+            echo '<p>
+            <a href="insert.html" class="btn btn-secondary">Insert</a>
+            <a href="update.html" class="btn btn-secondary">Update</a>
+            <a href="delete.html" class="btn btn-secondary">Delete</a>
+            </p>';
         }
     ?>
-    <br>
-    <a href="insert.html">Insert page</a>
     
 </body>
 </html>
