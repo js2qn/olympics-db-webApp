@@ -20,9 +20,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 $stmt->bind_param(ss, $searchString, $searchString);
                 $stmt->execute();
                 $stmt->bind_result($Team, $NOC);
-                echo "<table border=1><th>Team</th><th>NOC</th>\n";
+                echo "<table class='table table-hover table-bordered' border=1><th>Team</th><th>NOC</th><th>Details</th>\n";
                 while($stmt->fetch()) {
-                        echo "<tr><td>$Team</td><td>$NOC</td></tr>";
+                        echo "<tr><td>$Team</td><td>$NOC</td>";
+			echo '<td><a href="teamSite.php?Team='. $Team .'">View More</a></td></tr>';
                 }
                 echo "</table>";
 
