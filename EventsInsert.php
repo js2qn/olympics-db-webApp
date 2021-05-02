@@ -1,4 +1,21 @@
 <?php
+// Initialize the session
+session_start();
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
+
+<?php
+if($_SESSION["user_type"] != 1){ // redirects user if not a superuser
+    header("location: welcome.php");
+    exit();
+}
+?>
+
+<?php
  include_once("./library.php"); // To connect to the database
  $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
  // Check connection
