@@ -19,7 +19,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 $stmt->bind_param(s, $searchString);
                 $stmt->execute();
                 $stmt->bind_result($Games, $Year, $Season);
-                echo "<table border=1><th>Games</th><th>Year</th><th>Season</th>\n";
+                echo "<table class='table table-hover table-bordered' border=1><th>Games</th><th>Year</th><th>Season</th>\n";
                 while($stmt->fetch()) {
                         echo "<tr><td>$Games</td><td>$Year</td><td>$Season</td></tr>";
                 }
