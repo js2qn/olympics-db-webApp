@@ -12,7 +12,7 @@
                 $( "#AthleteName" ).change(function() {
 
                         $.ajax({
-                                url: 'searchAth.php',
+                                url: 'searchSailorName.php',
                                 data: {searchName: $( "#AthleteName" ).val()},
                                 success: function(data){
                                         $('#Nameresult').html(data);
