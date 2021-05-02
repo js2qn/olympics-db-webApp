@@ -9,7 +9,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 ?>
 
 <?php
-if($_SESSION["user_type"] != 1){ // redirects user if not a superuser
+if($_SESSION["usertype"] != 1){ // redirects user if not a superuser
     header("location: welcome.php");
     exit();
 }

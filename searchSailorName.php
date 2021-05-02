@@ -16,7 +16,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
         if($stmt->prepare("select * from athlete where Name like ?") or die(mysqli_error($db))) {
                 $searchString = '%' . $_GET['searchName'] . '%';
-                $stmt->bind_param(s, $searchString);
+                $stmt->bind_param('s', $searchString);
                 $stmt->execute();
                 $stmt->bind_result($ID, $Name, $Sex, $Height, $Weight, $clickCnt, $popular);
                 echo "<table class='table table-hover table-bordered' border=1><th>ID</th><th>Name</th><th>Sex</th><th>Height</th><th>Weight</th><th>Details</th>\n";
