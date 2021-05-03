@@ -3,6 +3,7 @@
 <body>
 <h2>Update into Athletes table</h2>
 <BR>
+<input type="button" value="Return to welcome page" class="homebutton" id="btnHome" onClick="document.location.href='http://cs.virginia.edu/~du5kx/ajax/ajaxSailors/welcome.php'" />
 <form action="AthletesUpdate.php" method="post">
 ID: <input type="int" name="id">
 Name: <input type="text" name="name">
@@ -14,6 +15,18 @@ Weight: <input type="int" name="weight">
 <form action="EventsUpdate.php" method="post">
 Event: <input type="text" name="event">
 Sport: <input type="text" name="sport">
+<input type="Submit">
+</form>
+<form action="GamesUpdate.php" method="post">
+Games: <input type="text" name="games">
+Year: <input type="text" name="year">
+Season: <input type="text" name="season">
+<input type="Submit">
+</form>
+<form action="PlayUpdate.php" method="post">
+ID: <input type="text" name="id">
+Event: <input type="text" name="event">
+Games: <input type="text" name="games">
 <input type="Submit">
 </form>
 </body>
