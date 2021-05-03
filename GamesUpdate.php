@@ -24,7 +24,7 @@ if($_SESSION["usertype"] != 1){ // redirects user if not a superuser
  echo "Failed to connect to MySQL: " . mysqli_connect_error();
  }
  // Form the SQL query (an INSERT query)
- $sql="UPDATE game_name SET Games = '$_POST[games]', Year = '$_POST[year]', Season = '$_POST[season]'";
+ $sql="UPDATE game_name SET Games = '$_POST[games]', Year = '$_POST[year]', Season = '$_POST[season]'  WHERE Games = '$_POST[games]'";
 
  if (!mysqli_query($con,$sql))
  {
