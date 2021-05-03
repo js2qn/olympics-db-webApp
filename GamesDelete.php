@@ -25,7 +25,7 @@ if($_SESSION["usertype"] != 1){ // redirects user if not a superuser
  }
  // Form the SQL query (an INSERT query)
 
- $sql="DELETE FROM game_name WHERE Event='$_POST[game]'";
+ $sql="DELETE FROM game_name WHERE Games='$_POST[game]'";
  if (!mysqli_query($con,$sql))
  {
  die('Error: ' . mysqli_error($con));
