@@ -1,32 +1,62 @@
-
 <html>
 <body>
-<h2>Insert into different table</h2>
+<h2 class="display-4" style="margin:35px auto 0px 35px;">Insert into different tables</h2>
 <BR>
-<input type="button" value="Return to welcome page" class="homebutton" id="btnHome" onClick="document.location.href='welcome.php'" />
+<style>
+input[type=text] {
+  width: 10%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+input[type=int] {
+  width: 10%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+body{ font: 14px sans-serif; }
+.wrapper{ width: 350px; padding: 20px; }
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+</style>
+<h3>Athletes Table</h3>
 <form action="AthletesInsert.php" method="post">
-Name: <input type="text" name="name">
-Sex: <input type="text" name="sex">
-Height: <input type="int" name="height">
-Weight: <input type="int" name="weight">
-<input type="Submit">
+<label>Name</label>: <input type="text" name="name">
+<lable>Sex</lable>: <input type="text" name="sex">
+<label>Height</label>: <input type="int" name="height">
+<label>Weight</label>: <input type="int" name="weight">
+<input type="submit" class="btn btn-primary" value="Submit result">
 </form>
+<h3>Events Table</h3>
 <form action="EventsInsert.php" method="post">
 Event: <input type="text" name="event">
 Sport: <input type="text" name="sport">
-<input type="Submit">
+<input type="submit" class="btn btn-primary" value="Submit result">
 </form>
+<h3>Games Table</h3>
 <form action="GamesInsert.php" method="post">
 Games: <input type="text" name="games">
 Year: <input type="text" name="year">
 Season: <input type="text" name="season">
-<input type="Submit">
+<input type="submit" class="btn btn-primary" value="Submit result">
 </form>
+<h3>PlaysGame Table</h3>
 <form action="PlayInsert.php" method="post">
 ID: <input type="text" name="id">
 Event: <input type="text" name="event">
 Games: <input type="text" name="games">
-<input type="Submit">
+<input type="submit" class="btn btn-primary" value="Submit result">
 </form>
 </body>
 </html>
