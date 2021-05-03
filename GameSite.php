@@ -8,24 +8,32 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 ?>
 <?php
+//CSS source https://onepagelove.com/minimal-resume
 require "dbutil.php";
 $db = DbUtil::loginConnection();
 $stmtCity = $db->stmt_init();
 $stmt = $db->stmt_init();
 $stmtE = $db->stmt_init();
 
+echo '<div style="float: right;"><a href="login.php">Home </a></div>';
 if($stmtCity->prepare("SELECT City FROM location WHERE Games = ? ORDER BY City") or die(mysqli_error($db))) {
     $gameID =  $_GET['Games'] ;
-    echo "<b>$gameID</b></br>";
+    echo "<head>
+	<title>GameSite</title>
+	<link rel='stylesheet' type='text/css' href='styles.css'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+</head>
+<body>
+	<div class='container'>
+		<div class='hero'>
+			<h1 class='name'><strong>$gameID</strong></h1>";
     $stmtCity->bind_param(i, $gameID);
     $stmtCity->execute();
     $stmtCity->bind_result($City);
-    echo "<b>Host: </b>\n";
-    echo "<table class='table table-hover table-bordered' border=0><th></th>\n";
     while($stmtCity->fetch()) {
-        echo "<tr><td>$City;</td></tr>\n";
+        echo "<span class='email'>$City</span>";
     }
-    echo "</table>";
+    echo "</table></div></div>";
     $stmtCity->close();
 }
 
@@ -36,12 +44,14 @@ if($stmt->prepare("SELECT DISTINCT Team, NOC FROM TeamParticipates WHERE Games =
     $stmt->store_result();
     if($stmt->num_rows > 0) {
         $stmt->bind_result($Team, $NOC);
-        echo "<b>Participated Teams: </b>\n";
-        echo "<table class='table table-hover table-bordered' border=0><th></th>\n";
+        echo "<div class='container cards'>
+			<h2 class='section-title'>Participated Teams</h2>";
+        echo "<table class='table table-hover table-bordered' border=0><th></th><th></th>\n";
         while($stmt->fetch()) {
-            echo "<tr><td>$Team, $NOC;</td></tr>\n";
+            echo "<tr><td>$Team, $NOC;</td>";
+            echo '<td><a href="TeamSite.php?Team='. $Team .'&amp;NOC='. $NOC .'">View More</a></td></tr>';
         }
-        echo "</table>";
+        echo "</table></div>";
     }
     $stmt->close();
 }
@@ -53,12 +63,13 @@ if($stmtE->prepare("SELECT DISTINCT Event FROM GameEvent WHERE Games = ? ORDER B
     $stmtE->store_result();
     if($stmtE->num_rows > 0) {
         $stmtE->bind_result($Event);
-        echo "<b>Events: </b>\n";
+        echo "<div class='container cards'>
+        <h2 class='section-title'>Events: </h2>";
         echo "<table class='table table-hover table-bordered' border=0><th></th>\n";
         while($stmtE->fetch()) {
             echo "<tr><td>$Event</td></tr>\n";
         }
-        echo "</table>";
+        echo "</table></div>";
     }
     $stmtE->close();
 }
