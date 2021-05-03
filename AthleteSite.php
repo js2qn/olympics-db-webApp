@@ -8,9 +8,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 ?>
 <?php
+//CSS source https://onepagelove.com/minimal-resume
 require "dbutil.php";
 $db = DbUtil::loginConnection();
-
+echo '<div style="float: right;"><a href="login.php">Home </a></div>';
 $stmt = $db->stmt_init();
 $stmtBasic = $db->stmt_init();
 $stmtATG = $db->stmt_init();
@@ -135,7 +136,7 @@ if($stmtMedals->prepare("CALL AthMedal(?)")or die(mysqli_error($db))){
 			</div>
 		</div>";
         }
-        echo "</echo>";
+        echo "</body>";
     }
     $stmtMedals->close();
 }
